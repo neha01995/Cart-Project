@@ -10,9 +10,51 @@ class CartItem extends React.Component{
 
         }
         // this.increaseQuantity=this.increaseQuantity.bind(this);
+        this.testing();
+    }
+    testing(){
+        const promise=new Promise((resolve,reject)=>{
+            setTimeout( () =>{
+                resolve('done');
+            },5000);
+        })
+        promise.then(() =>{
+            //setState acts like a synchronous call
+            this.setState({qty:this.state.qty+10});
+            console.log('state',this.state);
+        });
     }
     increaseQuantity =() =>{
-        console.log('this',this.state);
+        // this.state.qty+=1;
+        // console.log('this',this.state);
+        //setState form 1
+        // this.setState({
+        //     qty:this.state.qty+1
+        // });
+
+        //setState form 2- if prevState required use this
+        this.setState((prevState) =>{
+            return{
+                qty:prevState.qty+1
+            }
+        }, () =>{
+            console.log('this.state',this.state);
+
+        });
+    }
+    decreaseQuantity =() =>{
+        const {qty}=this.state;
+        if(qty==0){
+            return;
+        }
+
+
+        //setState form 2- if prevState required use this
+        this.setState((prevState) =>{
+            return{
+                qty:prevState.qty-1
+            }
+        });
     }
     render(){
         const {title,price,qty}=this.state;
@@ -22,7 +64,7 @@ class CartItem extends React.Component{
             <img style={styles.image}/>
             </div>
             <div className="right-block">
-                <div style={{fontSize:30}}>{title}</div>
+                <div style={{fontSize:50}}>{title}</div>
                 <div style={{color:'#777'}}>Rs {price}</div>
                 <div style={{color:'#777'}}>Qty: {qty}</div>
                 <div className="cart-item-actions">
@@ -38,6 +80,7 @@ class CartItem extends React.Component{
                          className="action-icons" 
                          
                          src="https://t4.ftcdn.net/jpg/03/16/36/03/240_F_316360373_uWcj5rZxsUbmoAogMfow8EZhUOn7FTM0.jpg"
+                         onClick={this.decreaseQuantity}
                     />
                     <img 
                         alt="delete" 
@@ -56,9 +99,9 @@ class CartItem extends React.Component{
 
 const styles={
     image:{
-        height:110,
-        width:110,
-        borderRadius:4,
+        height:200,
+        width:200,
+        borderRadius:5,
         background:'#ccc'
     }
 }

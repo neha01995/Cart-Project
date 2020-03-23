@@ -8,7 +8,7 @@ body {
 }
 .cart-item{
   display: inline-flex;
-  margin: 20px 10px;
+  margin: 30px 20px;
 
 }
 
@@ -20,10 +20,13 @@ body {
   margin-top:20px;
 }
 .action-icons{
-  height:25px;
-  width:25px;
+  height:50px;
+  width:50px;
   margin-right: 10px;
 }
 .action-icons:hover{
   cursor: pointer;
+}
+.cart-text-size{
+  font-size: 50px;
 }
