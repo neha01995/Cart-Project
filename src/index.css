@@ -30,3 +30,7 @@ body {
 .cart-text-size{
   font-size: 50px;
 }
+.cart{
+  display: flex;
+  flex-direction: column;
+}
