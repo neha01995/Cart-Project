@@ -24,7 +24,7 @@ class CartItem extends React.Component{
     //         console.log('state',this.state);
     //     });
     // }
-    increaseQuantity =() =>{
+    // increaseQuantity =() =>{
         // this.state.qty+=1;
         // console.log('this',this.state);
         //setState form 1
@@ -33,32 +33,33 @@ class CartItem extends React.Component{
         // });
 
         //setState form 2- if prevState required use this
-        this.setState((prevState) =>{
-            return{
-                qty:prevState.qty+1
-            }
-        }, () =>{
-            console.log('this.state',this.state);
+    //     this.setState((prevState) =>{
+    //         return{
+    //             qty:prevState.qty+1
+    //         }
+    //     }, () =>{
+    //         console.log('this.state',this.state);
 
-        });
-    }
-    decreaseQuantity =() =>{
-        const {qty}=this.state;
-        if(qty==0){
-            return;
-        }
+    //     });
+    // }
+    // decreaseQuantity =() =>{
+    //     const {qty}=this.state;
+    //     if(qty==0){
+    //         return;
+    //     }
 
 
-        //setState form 2- if prevState required use this
-        this.setState((prevState) =>{
-            return{
-                qty:prevState.qty-1
-            }
-        });
-    }
+    //     //setState form 2- if prevState required use this
+    //     this.setState((prevState) =>{
+    //         return{
+    //             qty:prevState.qty-1
+    //         }
+    //     });
+    // }
     render(){
         console.log('this.props',this.props);
         const {title,price,qty}=this.props.product;
+        const {product, onIncreaseQutantiy, onDecreaseQutantiy,onDeleteProduct}=this.props;
         return(
         <div className="cart-item">
             <div className="left-block">
@@ -74,19 +75,20 @@ class CartItem extends React.Component{
                         alt="increase" 
                         className="action-icons" 
                         src="https://image.flaticon.com/icons/svg/992/992651.svg"
-                        onClick={this.increaseQuantity}
+                        onClick={() => onIncreaseQutantiy(product)}
                     />
                     <img 
                          alt="decrease" 
                          className="action-icons" 
                          
                          src="https://t4.ftcdn.net/jpg/03/16/36/03/240_F_316360373_uWcj5rZxsUbmoAogMfow8EZhUOn7FTM0.jpg"
-                         onClick={this.decreaseQuantity}
+                         onClick={() => onDecreaseQutantiy(product)}
                     />
                     <img 
                         alt="delete" 
                         className="action-icons" 
                         src="https://as2.ftcdn.net/jpg/01/90/89/15/500_F_190891550_N7uKp2aHE3mOc20dmtDytj7atgvbhdOu.jpg" 
+                        onClick={() => onDeleteProduct(product.id)}
                     />
 
             
