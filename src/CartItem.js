@@ -1,5 +1,5 @@
 import React from 'react';
-class CartItem extends React.Component{
+const CartItem = (props) =>{
     // constructor (){
     //     super();
     //     this.state={
@@ -56,14 +56,14 @@ class CartItem extends React.Component{
     //         }
     //     });
     // }
-    render(){
-        console.log('this.props',this.props);
-        const {title,price,qty}=this.props.product;
-        const {product, onIncreaseQutantiy, onDecreaseQutantiy,onDeleteProduct}=this.props;
+
+        // console.log('this.props',this.props);
+        const {title,price,qty}=props.product;
+        const {product, onIncreaseQuantity, onDecreaseQuantity,onDeleteProduct}=props;
         return(
         <div className="cart-item">
             <div className="left-block">
-            <img style={styles.image}/>
+            <img style={styles.image} src={product.img}/>
             </div>
             <div className="right-block">
                 <div style={{fontSize:50}}>{title}</div>
@@ -75,14 +75,14 @@ class CartItem extends React.Component{
                         alt="increase" 
                         className="action-icons" 
                         src="https://image.flaticon.com/icons/svg/992/992651.svg"
-                        onClick={() => onIncreaseQutantiy(product)}
+                        onClick={() => onIncreaseQuantity(product)}
                     />
                     <img 
                          alt="decrease" 
                          className="action-icons" 
                          
                          src="https://t4.ftcdn.net/jpg/03/16/36/03/240_F_316360373_uWcj5rZxsUbmoAogMfow8EZhUOn7FTM0.jpg"
-                         onClick={() => onDecreaseQutantiy(product)}
+                         onClick={() => onDecreaseQuantity(product)}
                     />
                     <img 
                         alt="delete" 
@@ -98,12 +98,12 @@ class CartItem extends React.Component{
         </div>
         );
     }
-}
+
 
 const styles={
     image:{
-        height:200,
-        width:200,
+        height:150,
+        width:150,
         borderRadius:5,
         background:'#ccc'
     }

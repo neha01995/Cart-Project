@@ -31,6 +31,6 @@ body {
   font-size: 50px;
 }
 .cart{
-  display: flex;
+  display: inline-block;
   flex-direction: column;
 }
